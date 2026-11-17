@@ -1,227 +1,244 @@
-<!doctype html>
-<html lang="ru">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="cache-control" content="no-cache">
-<title>Клиент $200 000 · три стратегии · Ортачало / Авлабари / Сабуртало</title>
-<style>
-:root{--cream:#FBF8F4;--sand:#F1E9DD;--champagne:#C9A96A;--choc:#4A3328;--ink:#2B2320;
---muted:#7A6A5F;--blue:#1F4E79;--green:#2F6B4F;--red:#9B3A2E;--line:#E4D8C8;--white:#fff}
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Каталог лотов · две стратегии · $200 000</title><style>
+:root{--cream:#FBF8F4;--sand:#F1E9DD;--champ:#C9A96A;--choc:#4A3328;--ink:#2B2320;--muted:#7A6A5F;
+--blue:#1F4E79;--green:#2F6B4F;--red:#9B3A2E;--line:#E4D8C8}
 *{box-sizing:border-box}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.5;font-size:16px}
-.wrap{max-width:1000px;margin:0 auto;padding:16px 14px 150px}
-.hero{background:linear-gradient(135deg,#FFFDFA 0%,var(--sand) 100%);border:1px solid var(--line);border-radius:20px;padding:22px 18px;margin-bottom:14px}
-.eyebrow{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--champagne);font-weight:700}
-h1{font-size:24px;line-height:1.2;margin:8px 0 6px;color:var(--choc)}
-.sub{color:var(--muted);font-size:14.5px;margin:0}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:12.5px;color:var(--choc)}
-.chip b{color:var(--choc)}
-h2{font-size:18px;margin:22px 0 8px;color:var(--choc)}
-.note{font-size:13.5px;color:var(--muted);margin:0 0 10px}
-.presets{display:grid;gap:8px;grid-template-columns:1fr}
-@media(min-width:700px){.presets{grid-template-columns:repeat(3,1fr)}}
-.preset{text-align:left;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer;font:inherit;color:inherit}
-.preset:hover{border-color:var(--champagne)}
-.preset b{display:block;color:var(--choc);font-size:14.5px;margin-bottom:2px}
-.preset span{font-size:12.5px;color:var(--muted)}
-.tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 0 10px;position:sticky;top:0;background:var(--cream);z-index:5}
-.tab{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;font-size:13px;cursor:pointer;color:var(--choc)}
-.tab.on{background:var(--choc);border-color:var(--choc);color:#fff}
-.grid{display:grid;gap:12px;grid-template-columns:1fr}
-@media(min-width:760px){.grid{grid-template-columns:1fr 1fr}}
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-.card.sel{border-color:var(--green);box-shadow:0 0 0 2px rgba(47,107,79,.15)}
-.card img{width:100%;height:132px;object-fit:cover;background:var(--sand)}
-.body{padding:11px 13px 13px}
-.tag{display:inline-block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 9px;border:1px solid var(--line);color:var(--muted)}
-.tag.ready{background:#EEF6F0;border-color:#CFE5D6;color:var(--green)}
-.tag.build{background:#FDF4E6;border-color:#EEDCBE;color:#8A6A2F}
-.name{font-weight:700;color:var(--choc);font-size:15.5px;margin:7px 0 1px}
-.addr{font-size:12.5px;color:var(--muted);margin:0 0 8px}
-.price{font-size:20px;font-weight:700;color:var(--choc)}
-.ppm{font-size:12.5px;color:var(--muted)}
-.meta{display:flex;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:6px}
-.actions{display:flex;gap:8px;margin-top:10px;align-items:center}
-.btn{flex:1;border:1px solid var(--choc);background:var(--choc);color:#fff;border-radius:10px;padding:9px 10px;font-size:13.5px;font-weight:600;cursor:pointer}
-.card.sel .btn{background:var(--green);border-color:var(--green)}
-.link{font-size:12.5px;color:var(--blue);text-decoration:none;white-space:nowrap}
-.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:9px 12px calc(9px + env(safe-area-inset-bottom));z-index:20;box-shadow:0 -6px 20px rgba(74,51,40,.07)}
-.barin{max-width:1000px;margin:0 auto;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.sum{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
-.sum b{display:block;font-size:16px;color:var(--choc)}
-.ok{color:var(--green)}.bad{color:var(--red)}
-.reset{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;font-size:12.5px;cursor:pointer;color:var(--choc)}
-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:13.5px}
-th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line)}
-th{background:var(--sand);color:var(--choc);font-size:12.5px;font-weight:700}
-tr:last-child td{border-bottom:none}
-.know{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 15px}
-.know li{margin-bottom:7px;font-size:14px}
-footer{margin-top:22px;font-size:12px;color:var(--muted)}
-</style>
-</head>
-<body>
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:780px;margin:0 auto;padding:0 18px 60px}
+header{background:linear-gradient(160deg,#FFFDF9,#F6EFE4);border-bottom:1px solid var(--line);padding:32px 0 24px}
+.kicker{letter-spacing:.14em;text-transform:uppercase;font-size:11px;color:var(--champ);font-weight:700}
+h1{font-size:28px;line-height:1.2;margin:10px 0 8px;color:var(--choc)}
+.lead{color:var(--muted);font-size:15px;margin:0}
+h2{font-size:21px;color:var(--choc);margin:34px 0 4px}
+h2 .no{color:var(--champ);font-size:14px;margin-right:8px}
+.subh{font-size:17px;color:var(--choc);margin:26px 0 8px}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+nav.toc a{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;
+font-size:13px;color:#5C4B40;text-decoration:none}
+nav.toc a b{color:var(--champ);margin-right:4px}
+h2.sub-h{font-size:17px;color:var(--choc);margin:30px 0 4px}
+.lead2{color:var(--muted);font-size:14px;margin:0 0 14px}
+.lot{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:10px 0}
+.lot .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.lot b{font-size:16.5px;color:var(--choc)}
+.lot .price{font-weight:800;color:var(--choc);white-space:nowrap}
+.lot .dist{color:var(--muted);font-size:13px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
+.chip{background:var(--sand);border-radius:8px;padding:3px 8px;font-size:12.5px;color:#5C4B40}
+.chip.hi{background:#EEF4FA;color:var(--blue);font-weight:700}
+.chip.yes{background:#EEF6F0;color:var(--green);font-weight:700}
+.chip.no{background:#FBEDE6;color:var(--red);font-weight:700}
+.lot a{color:var(--blue);font-size:13px;text-decoration:none;display:inline-block;margin-top:8px}
+.lot .note{color:var(--muted);font-size:13px;margin-top:6px}
+.btn-main{display:block;text-align:center;background:var(--champ);color:#fff;text-decoration:none;
+border-radius:12px;padding:13px 16px;font-size:15px;font-weight:600;margin:16px 0 4px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.btnrow a{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 14px;
+font-size:13px;color:var(--choc);text-decoration:none;font-weight:500}
+.lot[id]{scroll-margin-top:16px}
+details.acc{background:#fff;border:1px solid var(--line);border-radius:14px;margin:26px 0 10px;overflow:hidden}
+details.acc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+gap:10px;padding:15px 16px;font-size:17px;color:var(--choc);font-weight:600}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary::after{content:"▾";color:var(--champ);font-size:15px;transition:transform .2s}
+details.acc[open] summary::after{transform:rotate(180deg)}
+details.acc summary .cnt{font-size:12px;color:var(--muted);font-weight:400;margin-left:auto;margin-right:6px}
+details.acc .acc-body{padding:0 16px 16px}
+details.acc .acc-body .sub{margin-top:0}
+.calc{background:#FFFDF7;border:1px solid var(--line);border-left:3px solid var(--champ);border-radius:10px;padding:12px 14px;font-size:14px;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:10px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left}
+th{background:var(--sand);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+td.r{text-align:right;white-space:nowrap}
+footer{color:var(--muted);font-size:12px;margin-top:32px;border-top:1px solid var(--line);padding-top:14px}
+@media(max-width:520px){h1{font-size:23px}.lot .top{flex-direction:column;gap:2px}}
+nav.toc a.go{background:var(--choc);color:#fff;border-color:var(--choc);font-weight:700}
+.fold{border:1px solid var(--line);border-radius:14px;background:#fff;margin:10px 0 4px;padding:0}
+.fold>summary{cursor:pointer;list-style:none;padding:14px 16px;font-weight:700;color:var(--choc);display:flex;justify-content:space-between;align-items:center}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary:after{content:"\25BE";color:var(--champ);font-size:14px}
+.fold .cnt{color:var(--muted);font-weight:400;font-size:13px}
+.fold .body{padding:0 10px 12px}
+.fold .lot{margin:8px 0}
+.btn{display:inline-block;background:var(--choc);color:#fff;text-decoration:none;border-radius:999px;padding:11px 20px;font-size:14.5px;font-weight:700;margin:6px 0 2px}
+</style></head><body>
+<header><div class="wrap">
+  <div class="kicker">Каталог · Тбилиси · $200 000</div>
+  <h1>Каталог лотов под две стратегии</h1>
+  <p class="lead">Ортачало, Авлабари, Кавтарадзе (Ваке). Готовое жильё 1+1, переуступки и квартиры
+  в стройке — с ценой, сроком и схемой оплаты.</p>
+</div></header>
 <div class="wrap">
-  <header class="hero">
-    <div class="eyebrow">ВНЖ через недвижимость · Тбилиси · 14.11.2026</div>
-    <h1>Три стратегии на $200 000 — и собирай любой набор сам</h1>
-    <p class="sub">Отмечай лоты — снизу сразу видно сумму, аренду, доходность, остаток и проходит ли ВНЖ.</p>
-    <div class="chips">
-      <span class="chip">Бюджет <b>$200 000</b></span>
-      <span class="chip">ВНЖ от <b>$150 000</b></span>
-      <span class="chip">8 комплексов · 58 лотов</span>
-      <span class="chip">3 района</span>
+
+  <h2 id="s1"><span class="no">01</span>Стратегия 1. Готовое 1+1 под ВНЖ</h2>
+  <nav class="toc">
+    <a href="#s1"><b>01</b> Готовое под ВНЖ</a>
+    <a href="#s2"><b>02</b> Ипотека + стройка</a>
+    <a href="#s3"><b>03</b> Две квартиры</a>
+  </nav>
+
+  <p class="lead2">Квартира за $145–159 тыс. сдана: ВНЖ оформляется сразу, ремонт не нужен.
+  Остаток бюджета — переуступка в строящемся проекте, взнос сейчас, доплата в рассрочку.</p>
+
+  <details class="acc" id="pereustupki">
+    <summary><span>Остаток бюджета — варианты переуступок</span><span class="cnt">2 варианта</span></summary>
+    <div class="acc-body">
+    <p class="sub">Право требования по договору: платим взнос сейчас, остальное — рассрочкой до ключей. Полные расчёты — на отдельных страницах.</p>
+    <div class="btnrow">
+      <a href="#p-blox">BLOX Kheivani</a><a href="#p-vr">VR Krtsanisi</a>
     </div>
-  </header>
+<div class="lot" id="p-blox">
+      <div class="top"><div><b>BLOX Kheivani</b><div class="dist">Авлабари</div></div>
+      <div class="price">58 560 $</div></div>
+      <div class="chips"><span class="chip hi">1 600 $/м²</span><span class="chip">36,6 м²</span><span class="chip">стройка</span><span class="chip hi">взнос 30,0% · 17 568 $</span></div><div class="note">студия 36,6 м² по $1 600/м², двор 6 000 м², охрана 24/7
+      <a href="https://verita.bot-jarvis.com/client-b/blox/" target="_blank" rel="noopener">Разбор лота →</a>
+      </div>
+    </div>
+<div class="lot" id="p-vr">
+      <div class="top"><div><b>VR Krtsanisi Resort</b><div class="dist">Крцаниси</div></div>
+      <div class="price">152 100 $</div></div>
+      <div class="chips"><span class="chip hi">3 000 $/м²</span><span class="chip">50,7 м²</span><span class="chip">сдача 2029</span><span class="chip hi">взнос 36,4% · 55 364 $</span></div><div class="note">40,2 м² + терраса 10,5 м², 2-й этаж; остаток $96 736 по $2 303/мес × 42 месяца без процентов
+      <a href="https://verita.bot-jarvis.com/client-b/vr/" target="_blank" rel="noopener">Разбор лота →</a>
+      </div>
+    </div>
+    </div>
+  </details>
 
-  <div class="know" style="margin-top:4px">
-    <b>Что входит в деньги на странице.</b>
-    <ul style="margin:8px 0 0;padding-left:18px">
-      <li><b>Цена лота</b> — как в объявлении, без торга.</li>
-      <li><b>Ремонт с мебелью</b> — $600/м² жилой площади; жилая ≈ 70% общей, то есть ~$420/м² общей. Считается по каждому лоту.</li>
-      <li><b>Вход всего</b> — цена + ремонт + $1 400 на оформление сделки.</li>
-      <li><b>Чистая доходность</b> — аренда минус управление 15% и налог 5%, делённая на «цена + ремонт».</li>
-      <li><b>ВНЖ</b> — считается по цене объектов, ремонт в порог $150 000 не входит.</li>
-    </ul>
-  </div>
+  <div class="lot">
+      <div class="top"><div><b>Monolith Green City</b><div class="dist">Ортачало</div></div>
+      <div class="price">150 000 $</div></div>
+      <div class="chips"><span class="chip hi">2 239 $/м²</span><span class="chip">67,0 м²</span><span class="chip">сдан, Q1 2025</span><span class="chip yes">ВНЖ: да</span></div><div class="note">парк и бассейны во дворе</div>
+      
+    </div><div class="lot">
+      <div class="top"><div><b>Monolith Green City</b><div class="dist">Ортачало</div></div>
+      <div class="price">150 000 $</div></div>
+      <div class="chips"><span class="chip hi">2 174 $/м²</span><span class="chip">69,0 м²</span><span class="chip">сдан, Q1 2025</span><span class="chip yes">ВНЖ: да</span></div><div class="note">самый ровный метр: $2 174</div>
+      
+    </div><div class="lot">
+      <div class="top"><div><b>Monolith Green City</b><div class="dist">Ортачало</div></div>
+      <div class="price">145 000 $</div></div>
+      <div class="chips"><span class="chip hi">2 197 $/м²</span><span class="chip">66,0 м²</span><span class="chip">сдан, Q1 2025</span><span class="chip yes">ВНЖ: да</span></div><div class="note">дешевле всех в полосе</div>
+      
+    </div><div class="lot">
+      <div class="top"><div><b>Krtsanisi Modern</b><div class="dist">Ортачало</div></div>
+      <div class="price">147 000 $</div></div>
+      <div class="chips"><span class="chip hi">2 882 $/м²</span><span class="chip">51,0 м²</span><span class="chip">сдан, Q3 2025</span><span class="chip yes">ВНЖ: да</span></div><div class="note">компактный 1+1, метраж дорогой</div>
+      
+    </div><div class="lot">
+      <div class="top"><div><b>Moedani</b><div class="dist">Авлабари</div></div>
+      <div class="price">159 000 $</div></div>
+      <div class="chips"><span class="chip hi">2 484 $/м²</span><span class="chip">64,0 м²</span><span class="chip">сдан</span><span class="chip yes">ВНЖ: да</span></div><div class="note">центр Авлабари, у метро</div>
+      
+    </div><div class="lot">
+      <div class="top"><div><b>M² Hippodrome</b><div class="dist">Сабуртало</div></div>
+      <div class="price">155 000 $</div></div>
+      <div class="chips"><span class="chip hi">2 719 $/м²</span><span class="chip">57,0 м²</span><span class="chip">сдан</span><span class="chip yes">ВНЖ: да</span></div><div class="note">Сабуртало, новый дом</div>
+      
+    </div>
 
-  <h2>Готовые наборы</h2>
-  <p class="note">Три стратегии одной кнопкой — дальше их можно менять лотами.</p>
-  <div class="presets">
-    <button class="preset" onclick="preset(1)"><b>1. Готовое под ВНЖ</b><span>Park Ortachala 94,7 м² · вход $192 690 с ремонтом.</span></button>
-    <button class="preset" onclick="preset(2)"><b>2. Каркас к марту</b><span>Arsenal 86 м² · вход $197 520, ВНЖ после сдачи Q4 2026.</span></button>
-    <button class="preset" onclick="preset(3)"><b>3. База под ВНЖ + резерв</b><span>Park 84 м², вход $186 680; вторая квартира — в рассрочку отдельно.</span></button>
-  </div>
+    
 
-  <h2>Портфели «две квартиры 1+1»</h2>
-  <p class="note">Три пары из разбора на $200 тыс.: одна квартира для жизни, вторая под аренду. Все дома сданы, ВНЖ оформляется сразу. <a href="https://verita.bot-jarvis.com/invest200/" target="_blank" rel="noopener">Полный разбор вариантов →</a></p>
-  <div class="presets">
-    <button class="preset" onclick="preset(4)"><b>A. ВНЖ с запасом</b><span>Krtsanisi Modern · 51,2 + 53,3 м² · $175 040</span></button>
-    <button class="preset" onclick="preset(5)"><b>B. Лучший баланс</b><span>Turfa 63 м² + M Tower 46,8 м² · $174 509</span></button>
-    <button class="preset" onclick="preset(6)"><b>C. Минимальный вход</b><span>Park Ortachala · 47 + 51 м² · $156 800</span></button>
-  </div>
+<div class="calc"><b>Как складывается бюджет.</b> Готовая квартира 145 000 $ + взнос
+  по переуступке 15 372 $ = <b>160 372 $</b> из 200 000 $.
+  ВНЖ — по готовой квартире, сразу. Ремонт в стратегии 1 не закладываем: берём готовое жильё,
+  аренда ~812 $/мес с первого месяца. Переуступка — BLOX Kheivani: взнос
+  15 372 $, остальное по графику застройщика.</div>
 
-  <h2>Лоты</h2>
-  <p class="note">Сдано — ВНЖ оформляется сразу. Стройка — ВНЖ после сдачи. Аренда — оценка по дому и соседям, не обещание.</p>
-  <div class="tabs">
-    <button class="tab on" onclick="setFilter('all',this)">Все</button>
-    <button class="tab" onclick="setFilter('ready',this)">Готовое</button>
-    <button class="tab" onclick="setFilter('build',this)">Каркас</button>
-    <button class="tab" onclick="setFilter('tail',this)">Хвост</button>
-  </div>
-  <div class="grid" id="grid"></div>
+  
 
-  <h2>Районы: что показывает рынок</h2>
-  <p class="note">Живые объявления korter на 14.11.2026, полоса бюджета $150–200 тыс.</p>
+    <a class="btn-main" href="#pereustupki" onclick="document.getElementById('pereustupki').open=true">Подобрать переуступку →</a>
+
+  
+
+  <h2 id="s2"><span class="no">02</span>Стратегия 2. Готовое в ипотеку + вторая в стройке</h2>
+  <p class="lead2">Готовая квартира берётся в ипотеку: своих денег — 30%. Вторая квартира — в стройке,
+  взнос 30% и рассрочка застройщика до сдачи.</p>
+
+  <h3 class="subh">Готовая квартира — база под ВНЖ</h3>
+  <div class="lot">
+      <div class="top"><div><b>Monolith Green City</b><div class="dist">Ортачало</div></div>
+      <div class="price">145 000 $</div></div>
+      <div class="chips"><span class="chip hi">2 197 $/м²</span><span class="chip">66,0 м²</span><span class="chip">сдан, Q1 2025</span><span class="chip yes">ВНЖ: да</span><span class="chip hi">ипотека 30% / 70%</span></div><div class="note">дешевле всех в полосе</div>
+      
+    </div>
+
+  <div class="calc"><b>Ипотека на готовую 145 000 $.</b> Взнос 30% — 43 500 $,
+  кредит 101 500 $ под 10% на 10 лет: платёж <b>1 341 $/мес</b> (+страхование жизни ~$38).
+  Аренда этой квартиры ~812 $/мес: доплата <b>~529 $</b> в месяц.</div>
+
+  <h2 style="font-size:17px;margin-top:26px">Вторая квартира в стройке</h2>
+  <div class="lot">
+      <div class="top"><div><b>Metropol Kavtaradze</b><div class="dist">Ваке, Кавтарадзе</div></div>
+      <div class="price">140 267 $</div></div>
+      <div class="chips"><span class="chip hi">2 230 $/м²</span><span class="chip">62,9 м²</span><span class="chip">2027</span><span class="chip hi">взнос 20% · 28 053 $</span></div><div class="note">23 этаж. Схема по разбору: взнос 20% и 80% на ключах в 2027. График взносов подтверждает договор — у застройщика на сайте условия не опубликованы</div>
+      <a href="https://verita.bot-jarvis.com/client-b/metropol/" target="_blank" rel="noopener">Разбор проекта →</a>
+    </div><div class="lot">
+      <div class="top"><div><b>Axis Avlabari</b><div class="dist">Авлабари</div></div>
+      <div class="price">103 360 $</div></div>
+      <div class="chips"><span class="chip hi">1 900 $/м²</span><span class="chip">54,4 м²</span><span class="chip">стройка</span><span class="chip hi">взнос 30% · 31 008 $</span></div><div class="note">5 квартир в подборке, переуступка у застройщика</div>
+      <a href="https://verita.bot-jarvis.com/axis52/" target="_blank" rel="noopener">Разбор проекта →</a>
+    </div><div class="lot">
+      <div class="top"><div><b>Gorgasali Tower</b><div class="dist">Ортачало</div></div>
+      <div class="price">92 232 $</div></div>
+      <div class="chips"><span class="chip hi">1 680 $/м²</span><span class="chip">54,9 м²</span><span class="chip">май 2027</span><span class="chip hi">взнос 30% · 27 670 $</span></div><div class="note">25 этаж, взнос $27 670 сейчас, остаток $64 562 к маю</div>
+      <a href="https://verita.bot-jarvis.com/ortachala82/" target="_blank" rel="noopener">Разбор проекта →</a>
+    </div>
+
   <table>
-    <tr><th>Район</th><th>Медиана $/м²</th><th>Лотов в полосе</th><th>Что брать</th></tr>
-    <tr><td>Авлабари</td><td>$2 400</td><td>23</td><td>Дорого за метр, зато центр и старый город рядом. Вход — каркас Arsenal.</td></tr>
-    <tr><td>Сабуртало</td><td>$1 767</td><td>63</td><td>Самый большой выбор, метро, университеты. Метр дешевле на треть.</td></tr>
-    <tr><td>Ортачало</td><td>$1 871</td><td>44</td><td>Готовые дома с парком, но каркас — только 2028 год.</td></tr>
+    <tr><th>Вторая квартира</th><th>Взнос</th><th>Своих денег всего</th></tr>
+    <tr><td>Gorgasali Tower · 54,9 м²</td><td class="r">27 670 $</td><td class="r">71 170 $</td></tr>
+    <tr><td>Axis Avlabari · 54,4 м²</td><td class="r">31 008 $</td><td class="r">74 508 $</td></tr>
+    <tr><td>Metropol Kavtaradze · 62,9 м²</td><td class="r">28 053 $</td><td class="r">71 553 $</td></tr>
   </table>
+  <div class="calc">Своих денег в стратегии 2 нужно от <b>58 923 $</b> до
+  <b>74 508 $</b> из 200 000 $ — остаток 125 492 $–141 077 $
+  остаётся резервом на платежи по ипотеке и ремонт.</div>
 
-  <h2>Что важно знать про ВНЖ</h2>
-  <div class="know"><ul>
-    <li>С 1 марта 2026 порог — <b>$150 000</b> по оценке аккредитованного оценщика (было $100 000).</li>
-    <li>Порог можно набрать <b>суммой нескольких объектов</b>, но право собственности должно быть оформлено — стройка не считается.</li>
-    <li>Продажа объекта-основания <b>отзывает ВНЖ</b>: продавать можно только заменив на равноценный.</li>
-    <li>Аренда: налог <b>5%</b> с дохода (для физлица), содержания и управление — сверх.</li>
-  </ul></div>
+  
 
-  <footer>Версия 15.11, сборка 2. Цены и площади — объявления застройщиков и korter на 14.11.2026. Аренда — оценка по дому и соседним домам, помечена как «~». Перед сделкой срок сдачи и условия оплаты уточняются у застройщика.</footer>
-</div>
+  
 
-<div class="bar"><div class="barin">
-  <div class="sum">
-    <div>Цена лотов<b id="sSum">$0</b></div>
-    <div>Объектов<b id="sCnt">0</b></div>
-    <div>Ремонт<b id="sReno">$0</b></div>
-    <div>Вход всего<b id="sIn">$0</b></div>
-    <div>ВНЖ<b id="sVnzh">нет</b></div>
-    <div>Аренда<b id="sRent">$0</b></div>
-    <div>Чистая<b id="sYield">—</b></div>
-    <div>Остаток<b id="sRest">$200 000</b></div>
-  </div>
-  <button class="reset" onclick="sel.clear();render()">Сбросить</button>
-</div></div>
+  <h2 id="s3"><span class="no">03</span>Две квартиры в ипотеку, одна под ВНЖ</h2>
+  <p class="sub">Порог ВНЖ считается суммой объектов: двух квартир хватает. Взнос 30% по каждой,
+  остальное — ипотека или рассрочка застройщика.</p>
+  <div class="card">
+      <h3>Две квартиры в Авлабари</h3>
+      <div class="sub">Авлабари, 52 м² + Авлабари, 52 м² · 104 м² всего · обе под ремонт</div>
+      <table>
+        <tr><td>Стоимость двух квартир</td><td class="r">197 600 $ (1 900 $/м²)</td></tr>
+        <tr><td>Взнос 30%</td><td class="r">59 280 $</td></tr>
+        <tr><td>Ипотека 70% · 10% · 10 лет</td><td class="r">138 320 $ → 1 828 $/мес</td></tr>
+        <tr><td>Ремонт и мебель, 600 $/м² общей</td><td class="r">62 400 $</td></tr>
+        <tr><td><b>Своих денег</b></td><td class="r"><b>121 680 $</b> из 200 000 $</td></tr>
+        <tr><td>Остаток бюджета</td><td class="r">78 320 $</td></tr>
+        <tr><td>Аренда одной квартиры</td><td class="r">~900 $/мес</td></tr>
+        <tr><td>Доплата по ипотеке</td><td class="r">928 $/мес</td></tr>
+        <tr><td>ВНЖ</td><td class="r">сумма 197 600 $ ≥ $150 000 ✔</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Авлабари + Ортачало</h3>
+      <div class="sub">Авлабари, 52 м² + Ортачало, 54,9 м² · 191 032 $ всего · ВНЖ по сумме объектов</div>
+      <table>
+        <tr><th>Когда</th><th>Что платим</th><th>Сумма</th></tr>
+        <tr><td>до конца ноября 2026</td><td>Авлабари 30% + Ортачало 30%</td><td class="r">57 310 $</td></tr>
+        <tr><td>февраль 2027</td><td>ремонт Авлабари (52 м²) + ипотека 69 160 $</td><td class="r">31 200 $ + 821 $/мес</td></tr>
+        <tr><td>май 2027</td><td>Ортачало 70% по договору + ремонт</td><td class="r">97 502 $</td></tr>
+        <tr><td><b>Своих денег всего</b></td><td>без ипотеки на Авлабари</td><td class="r"><b>186 012 $</b></td></tr>
+        <tr><td>Остаток из 200 000 $</td><td>резерв на платежи и оформление</td><td class="r">13 988 $</td></tr>
+        <tr><td>Аренда Авлабари</td><td>после ремонта, с весны 2027</td><td class="r">~$900/мес</td></tr>
+        <tr><td>ВНЖ</td><td>обе квартиры оформляются на вас</td><td class="r">сумма 191 032 $ ≥ $150 000 ✔</td></tr>
+      </table>
+      <div class="note">Ортачало: рассрочка застройщика — 30% сейчас и 70% в мае 2027.
+      Разбор вариантов по этому дому: <a href="https://verita.bot-jarvis.com/ortachala82/?v=17" target="_blank" rel="noopener">стратегии по Ортачало →</a></div>
+    </div>
+  <div class="note">Ремонт с мебелью считаем по 600 $/м² общей площади:
+  62 400 $ на 104 м².</div>
 
-<script>
-const LOTS = [{"proj": "Park Ortachala", "dev": "Irbis", "addr": "Вахтанга Горгасали, 105", "district": "Ортачало", "handover": "сдан, Q2 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/11895.jpg", "purl": "https://korter.ge/en/park-ortachala-tbilisi", "house": "Block A", "area": 51.0, "price": 72000, "ppm": 1412, "floors": "5", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/park-ortachala/85842", "rent": 590}, {"proj": "Park Ortachala", "dev": "Irbis", "addr": "Вахтанга Горгасали, 105", "district": "Ортачало", "handover": "сдан, Q2 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/11895.jpg", "purl": "https://korter.ge/en/park-ortachala-tbilisi", "house": "Block A", "area": 47.0, "price": 75200, "ppm": 1600, "floors": "1, 10, 11", "url": "https://korter.ge/en/park-ortachala-tbilisi/layouts/46034", "rent": 540}, {"proj": "Park Ortachala", "dev": "Irbis", "addr": "Вахтанга Горгасали, 105", "district": "Ортачало", "handover": "сдан, Q2 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/11895.jpg", "purl": "https://korter.ge/en/park-ortachala-tbilisi", "house": "Block B", "area": 51.0, "price": 76500, "ppm": 1500, "floors": "9", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/park-ortachala/262653", "rent": 590}, {"proj": "Park Ortachala", "dev": "Irbis", "addr": "Вахтанга Горгасали, 105", "district": "Ортачало", "handover": "сдан, Q2 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/11895.jpg", "purl": "https://korter.ge/en/park-ortachala-tbilisi", "house": "Block A", "area": 49.4, "price": 79040, "ppm": 1600, "floors": "1, 10, 11", "url": "https://korter.ge/en/park-ortachala-tbilisi/layouts/46033", "rent": 570}, {"proj": "Park Ortachala", "dev": "Irbis", "addr": "Вахтанга Горгасали, 105", "district": "Ортачало", "handover": "сдан, Q2 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/11895.jpg", "purl": "https://korter.ge/en/park-ortachala-tbilisi", "house": "Block B", "area": 102.0, "price": 143000, "ppm": 1402, "floors": "5", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/park-ortachala/684261", "rent": 1170}, {"proj": "Park Ortachala", "dev": "Irbis", "addr": "Вахтанга Горгасали, 105", "district": "Ортачало", "handover": "сдан, Q2 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/11895.jpg", "purl": "https://korter.ge/en/park-ortachala-tbilisi", "house": "Block B", "area": 84.0, "price": 150000, "ppm": 1786, "floors": "11", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/park-ortachala/905642", "rent": 970}, {"proj": "Park Ortachala", "dev": "Irbis", "addr": "Вахтанга Горгасали, 105", "district": "Ортачало", "handover": "сдан, Q2 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/11895.jpg", "purl": "https://korter.ge/en/park-ortachala-tbilisi", "house": "Block B", "area": 94.7, "price": 151520, "ppm": 1600, "floors": "1, 10, 11", "url": "https://korter.ge/en/park-ortachala-tbilisi/layouts/46044", "rent": 1090}, {"proj": "Park Ortachala", "dev": "Irbis", "addr": "Вахтанга Горгасали, 105", "district": "Ортачало", "handover": "сдан, Q2 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/11895.jpg", "purl": "https://korter.ge/en/park-ortachala-tbilisi", "house": "Block A", "area": 101.2, "price": 161920, "ppm": 1600, "floors": "1, 10, 11", "url": "https://korter.ge/en/park-ortachala-tbilisi/layouts/46029", "rent": 1160}, {"proj": "Monolith Green City", "dev": "Monolith Group", "addr": "Надиквари III", "district": "Ортачало", "handover": "сдан, Q1 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/14977.jpg", "purl": "https://korter.ge/en/monolith-green-city-tbilisi", "house": "—", "area": 50.0, "price": 55000, "ppm": 1100, "floors": "1", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/1009523", "rent": 650}, {"proj": "Monolith Green City", "dev": "Monolith Group", "addr": "Надиквари III", "district": "Ортачало", "handover": "сдан, Q1 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/14977.jpg", "purl": "https://korter.ge/en/monolith-green-city-tbilisi", "house": "Block Z", "area": 48.5, "price": 67173, "ppm": 1385, "floors": "1", "url": "https://korter.ge/en/monolith-green-city-tbilisi/layouts/64853", "rent": 630}, {"proj": "Monolith Green City", "dev": "Monolith Group", "addr": "Надиквари III", "district": "Ортачало", "handover": "сдан, Q1 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/14977.jpg", "purl": "https://korter.ge/en/monolith-green-city-tbilisi", "house": "Block Z", "area": 51.5, "price": 68000, "ppm": 1320, "floors": "2", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/monolith-green-city/26108", "rent": 670}, {"proj": "Monolith Green City", "dev": "Monolith Group", "addr": "Надиквари III", "district": "Ортачало", "handover": "сдан, Q1 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/14977.jpg", "purl": "https://korter.ge/en/monolith-green-city-tbilisi", "house": "Block B", "area": 50.5, "price": 69943, "ppm": 1385, "floors": "1", "url": "https://korter.ge/en/monolith-green-city-tbilisi/layouts/62402", "rent": 660}, {"proj": "Monolith Green City", "dev": "Monolith Group", "addr": "Надиквари III", "district": "Ортачало", "handover": "сдан, Q1 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/14977.jpg", "purl": "https://korter.ge/en/monolith-green-city-tbilisi", "house": "Block E", "area": 122.6, "price": 155000, "ppm": 1264, "floors": "7", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/monolith-green-city/593486", "rent": 1590}, {"proj": "Monolith Green City", "dev": "Monolith Group", "addr": "Надиквари III", "district": "Ортачало", "handover": "сдан, Q1 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/14977.jpg", "purl": "https://korter.ge/en/monolith-green-city-tbilisi", "house": "Block B", "area": 115.0, "price": 155000, "ppm": 1348, "floors": "1", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/monolith-green-city/1042935", "rent": 1500}, {"proj": "Monolith Green City", "dev": "Monolith Group", "addr": "Надиквари III", "district": "Ортачало", "handover": "сдан, Q1 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/14977.jpg", "purl": "https://korter.ge/en/monolith-green-city-tbilisi", "house": "Block A", "area": 120.8, "price": 170000, "ppm": 1407, "floors": "7", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/monolith-green-city/593464", "rent": 1570}, {"proj": "Monolith Green City", "dev": "Monolith Group", "addr": "Надиквари III", "district": "Ортачало", "handover": "сдан, Q1 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/14977.jpg", "purl": "https://korter.ge/en/monolith-green-city-tbilisi", "house": "—", "area": 120.8, "price": 176000, "ppm": 1457, "floors": "10", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/monolith-green-city/1029381", "rent": 1570}, {"proj": "Avlabari Residence 2", "dev": "Mylin Group", "addr": "Иустине Абуладзе, 17", "district": "Авлабари", "handover": "сдан, Q2 2026", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/24638.jpg", "purl": "https://korter.ge/en/avlabari-residence-2-tbilisi", "house": "Block D", "area": 43.0, "price": 115000, "ppm": 2674, "floors": "4", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/avlabari-residence-2/616350", "rent": 580}, {"proj": "Avlabari Residence 2", "dev": "Mylin Group", "addr": "Иустине Абуладзе, 17", "district": "Авлабари", "handover": "сдан, Q2 2026", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/24638.jpg", "purl": "https://korter.ge/en/avlabari-residence-2-tbilisi", "house": "Block D", "area": 61.38, "price": 167000, "ppm": 2721, "floors": "4", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/avlabari-residence-2/973699", "rent": 830}, {"proj": "Avlabari Residence 2", "dev": "Mylin Group", "addr": "Иустине Абуладзе, 17", "district": "Авлабари", "handover": "сдан, Q2 2026", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/24638.jpg", "purl": "https://korter.ge/en/avlabari-residence-2-tbilisi", "house": "Block C", "area": 61.3, "price": 167000, "ppm": 2724, "floors": "4", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/avlabari-residence-2/922276", "rent": 830}, {"proj": "Avlabari Residence 2", "dev": "Mylin Group", "addr": "Иустине Абуладзе, 17", "district": "Авлабари", "handover": "сдан, Q2 2026", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/24638.jpg", "purl": "https://korter.ge/en/avlabari-residence-2-tbilisi", "house": "Block D", "area": 122.01, "price": 170814, "ppm": 1400, "floors": "2", "url": "https://korter.ge/en/avlabari-residence-2-tbilisi/layouts/82369", "rent": 1650}, {"proj": "Avlabari Residence 2", "dev": "Mylin Group", "addr": "Иустине Абуладзе, 17", "district": "Авлабари", "handover": "сдан, Q2 2026", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/24638.jpg", "purl": "https://korter.ge/en/avlabari-residence-2-tbilisi", "house": "Block E", "area": 123.27, "price": 203396, "ppm": 1650, "floors": "3, 4", "url": "https://korter.ge/en/avlabari-residence-2-tbilisi/layouts/82343", "rent": 1660}, {"proj": "Arsenal Residence", "dev": "Arsenal Residence", "addr": "Гедеванишвили, 21", "district": "Авлабари", "handover": "Q4 2026", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/30983.jpg", "purl": "https://korter.ge/en/arsenal-residence-tbilisi", "house": "Block C", "area": 60.6, "price": 106050, "ppm": 1750, "floors": "1", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/arsenal-residence/297002", "rent": 790}, {"proj": "Arsenal Residence", "dev": "Arsenal Residence", "addr": "Гедеванишвили, 21", "district": "Авлабари", "handover": "Q4 2026", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/30983.jpg", "purl": "https://korter.ge/en/arsenal-residence-tbilisi", "house": "Block A", "area": 58.0, "price": 113000, "ppm": 1948, "floors": "2", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/arsenal-residence/128854", "rent": 750}, {"proj": "Arsenal Residence", "dev": "Arsenal Residence", "addr": "Гедеванишвили, 21", "district": "Авлабари", "handover": "Q4 2026", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/30983.jpg", "purl": "https://korter.ge/en/arsenal-residence-tbilisi", "house": "Block C", "area": 61.0, "price": 115000, "ppm": 1885, "floors": "2", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/arsenal-residence/243209", "rent": 790}, {"proj": "Arsenal Residence", "dev": "Arsenal Residence", "addr": "Гедеванишвили, 21", "district": "Авлабари", "handover": "Q4 2026", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/30983.jpg", "purl": "https://korter.ge/en/arsenal-residence-tbilisi", "house": "Block A", "area": 58.3, "price": 115000, "ppm": 1973, "floors": "4", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/arsenal-residence/533379", "rent": 760}, {"proj": "Arsenal Residence", "dev": "Arsenal Residence", "addr": "Гедеванишвили, 21", "district": "Авлабари", "handover": "Q4 2026", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/30983.jpg", "purl": "https://korter.ge/en/arsenal-residence-tbilisi", "house": "Block B", "area": 85.7, "price": 153900, "ppm": 1796, "floors": "1", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/arsenal-residence/930051", "rent": 1110}, {"proj": "Arsenal Residence", "dev": "Arsenal Residence", "addr": "Гедеванишвили, 21", "district": "Авлабари", "handover": "Q4 2026", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/30983.jpg", "purl": "https://korter.ge/en/arsenal-residence-tbilisi", "house": "Block B", "area": 85.7, "price": 154260, "ppm": 1800, "floors": "1, 2, 3", "url": "https://korter.ge/en/arsenal-residence-tbilisi/layouts/79359", "rent": 1110}, {"proj": "Arsenal Residence", "dev": "Arsenal Residence", "addr": "Гедеванишвили, 21", "district": "Авлабари", "handover": "Q4 2026", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/30983.jpg", "purl": "https://korter.ge/en/arsenal-residence-tbilisi", "house": "Block B", "area": 86.0, "price": 160000, "ppm": 1860, "floors": "4", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/arsenal-residence/393326", "rent": 1120}, {"proj": "Arsenal Residence", "dev": "Arsenal Residence", "addr": "Гедеванишвили, 21", "district": "Авлабари", "handover": "Q4 2026", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/30983.jpg", "purl": "https://korter.ge/en/arsenal-residence-tbilisi", "house": "Block B", "area": 101.0, "price": 187000, "ppm": 1851, "floors": "2", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/arsenal-residence/789414", "rent": 1310}, {"proj": "Niabi by Index", "dev": "Index", "addr": "Ниаби, 4", "district": "Авлабари", "handover": "Q4 2026", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/24623.jpg", "purl": "https://korter.ge/en/niabi-by-index-tbilisi", "house": "Niabi by Index", "area": 37.3, "price": 65275, "ppm": 1750, "floors": "2", "url": "https://korter.ge/en/niabi-by-index-tbilisi/layouts/81193", "rent": 520}, {"proj": "Niabi by Index", "dev": "Index", "addr": "Ниаби, 4", "district": "Авлабари", "handover": "Q4 2026", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/24623.jpg", "purl": "https://korter.ge/en/niabi-by-index-tbilisi", "house": "Niabi by Index", "area": 41.3, "price": 70210, "ppm": 1700, "floors": "", "url": "https://korter.ge/en/niabi-by-index-tbilisi/layouts/76112", "rent": 580}, {"proj": "Niabi by Index", "dev": "Index", "addr": "Ниаби, 4", "district": "Авлабари", "handover": "Q4 2026", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/24623.jpg", "purl": "https://korter.ge/en/niabi-by-index-tbilisi", "house": "Niabi by Index", "area": 42.4, "price": 72080, "ppm": 1700, "floors": "", "url": "https://korter.ge/en/niabi-by-index-tbilisi/layouts/76106", "rent": 590}, {"proj": "Niabi by Index", "dev": "Index", "addr": "Ниаби, 4", "district": "Авлабари", "handover": "Q4 2026", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/24623.jpg", "purl": "https://korter.ge/en/niabi-by-index-tbilisi", "house": "Niabi by Index", "area": 43.3, "price": 73610, "ppm": 1700, "floors": "", "url": "https://korter.ge/en/niabi-by-index-tbilisi/layouts/76109", "rent": 610}, {"proj": "Niabi by Index", "dev": "Index", "addr": "Ниаби, 4", "district": "Авлабари", "handover": "Q4 2026", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/24623.jpg", "purl": "https://korter.ge/en/niabi-by-index-tbilisi", "house": "Niabi by Index", "area": 85.1, "price": 144670, "ppm": 1700, "floors": "1, 2", "url": "https://korter.ge/en/niabi-by-index-tbilisi/layouts/81162", "rent": 1190}, {"proj": "Niabi by Index", "dev": "Index", "addr": "Ниаби, 4", "district": "Авлабари", "handover": "Q4 2026", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/24623.jpg", "purl": "https://korter.ge/en/niabi-by-index-tbilisi", "house": "Niabi by Index", "area": 85.8, "price": 150150, "ppm": 1750, "floors": "3", "url": "https://korter.ge/en/niabi-by-index-tbilisi/layouts/81202", "rent": 1200}, {"proj": "Niabi by Index", "dev": "Index", "addr": "Ниаби, 4", "district": "Авлабари", "handover": "Q4 2026", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/24623.jpg", "purl": "https://korter.ge/en/niabi-by-index-tbilisi", "house": "Niabi by Index", "area": 85.3, "price": 162070, "ppm": 1900, "floors": "4", "url": "https://korter.ge/en/niabi-by-index-tbilisi/layouts/81216", "rent": 1190}, {"proj": "Metropol Ortachala", "dev": "Metropol", "addr": "Димитри Гулия, 1", "district": "Ортачало", "handover": "Q4 2027", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/29999.jpg", "purl": "https://korter.ge/en/metropol-ortachala-tbilisi", "house": "Блок B1", "area": 53.1, "price": 110448, "ppm": 2080, "floors": "14, 15, 16", "url": "https://korter.ge/en/metropol-ortachala-tbilisi/layouts/83162", "rent": 610}, {"proj": "Metropol Ortachala", "dev": "Metropol", "addr": "Димитри Гулия, 1", "district": "Ортачало", "handover": "Q4 2027", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/29999.jpg", "purl": "https://korter.ge/en/metropol-ortachala-tbilisi", "house": "Блок A1", "area": 53.1, "price": 112572, "ppm": 2120, "floors": "14, 15, 16", "url": "https://korter.ge/en/metropol-ortachala-tbilisi/layouts/83117", "rent": 610}, {"proj": "Metropol Ortachala", "dev": "Metropol", "addr": "Димитри Гулия, 1", "district": "Ортачало", "handover": "Q4 2027", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/29999.jpg", "purl": "https://korter.ge/en/metropol-ortachala-tbilisi", "house": "Блок B1", "area": 53.3, "price": 115928, "ppm": 2175, "floors": "14, 15, 16", "url": "https://korter.ge/en/metropol-ortachala-tbilisi/layouts/83169", "rent": 610}, {"proj": "Metropol Ortachala", "dev": "Metropol", "addr": "Димитри Гулия, 1", "district": "Ортачало", "handover": "Q4 2027", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/29999.jpg", "purl": "https://korter.ge/en/metropol-ortachala-tbilisi", "house": "Блок B1", "area": 57.7, "price": 119151, "ppm": 2065, "floors": "14, 15, 16", "url": "https://korter.ge/en/metropol-ortachala-tbilisi/layouts/92184", "rent": 660}, {"proj": "Metropol Ortachala", "dev": "Metropol", "addr": "Димитри Гулия, 1", "district": "Ортачало", "handover": "Q4 2027", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/29999.jpg", "purl": "https://korter.ge/en/metropol-ortachala-tbilisi", "house": "Блок B1", "area": 101.4, "price": 177450, "ppm": 1750, "floors": "6, 7, 8", "url": "https://korter.ge/en/metropol-ortachala-tbilisi/layouts/80758", "rent": 1170}, {"proj": "Metropol Ortachala", "dev": "Metropol", "addr": "Димитри Гулия, 1", "district": "Ортачало", "handover": "Q4 2027", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/29999.jpg", "purl": "https://korter.ge/en/metropol-ortachala-tbilisi", "house": "Блок A1", "area": 107.4, "price": 182580, "ppm": 1700, "floors": "6, 10, 7", "url": "https://korter.ge/en/metropol-ortachala-tbilisi/layouts/80698", "rent": 1240}, {"proj": "Metropol Ortachala", "dev": "Metropol", "addr": "Димитри Гулия, 1", "district": "Ортачало", "handover": "Q4 2027", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/29999.jpg", "purl": "https://korter.ge/en/metropol-ortachala-tbilisi", "house": "Блок B1", "area": 101.9, "price": 184439, "ppm": 1810, "floors": "14, 15, 16", "url": "https://korter.ge/en/metropol-ortachala-tbilisi/layouts/92183", "rent": 1170}, {"proj": "Metropol Ortachala", "dev": "Metropol", "addr": "Димитри Гулия, 1", "district": "Ортачало", "handover": "Q4 2027", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/29999.jpg", "purl": "https://korter.ge/en/metropol-ortachala-tbilisi", "house": "Блок A1", "area": 107.9, "price": 189904, "ppm": 1760, "floors": "14, 15, 16", "url": "https://korter.ge/en/metropol-ortachala-tbilisi/layouts/83116", "rent": 1240}, {"proj": "Blox Sarajishvili", "dev": "Blox", "addr": "Тенгиза Шешелидзе, 20", "district": "Глдани", "handover": "Q1 2028", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/32822.jpg", "purl": "https://korter.ge/en/blox-sarajishvili-tbilisi", "house": "Block C", "area": 36.9, "price": 44280, "ppm": 1200, "floors": "3, 4, 5", "url": "https://korter.ge/en/blox-sarajishvili-tbilisi/layouts/84775", "rent": 370}, {"proj": "Blox Sarajishvili", "dev": "Blox", "addr": "Тенгиза Шешелидзе, 20", "district": "Глдани", "handover": "Q1 2028", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/32822.jpg", "purl": "https://korter.ge/en/blox-sarajishvili-tbilisi", "house": "Block B", "area": 36.9, "price": 46125, "ppm": 1250, "floors": "3, 4, 5", "url": "https://korter.ge/en/blox-sarajishvili-tbilisi/layouts/84762", "rent": 370}, {"proj": "Blox Sarajishvili", "dev": "Blox", "addr": "Тенгиза Шешелидзе, 20", "district": "Глдани", "handover": "Q1 2028", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/32822.jpg", "purl": "https://korter.ge/en/blox-sarajishvili-tbilisi", "house": "Block B", "area": 36.9, "price": 47970, "ppm": 1300, "floors": "24, 25", "url": "https://korter.ge/en/blox-sarajishvili-tbilisi/layouts/92883", "rent": 370}, {"proj": "Blox Sarajishvili", "dev": "Blox", "addr": "Тенгиза Шешелидзе, 20", "district": "Глдани", "handover": "Q1 2028", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/32822.jpg", "purl": "https://korter.ge/en/blox-sarajishvili-tbilisi", "house": "Block C", "area": 51.1, "price": 61320, "ppm": 1200, "floors": "3, 4, 5", "url": "https://korter.ge/en/blox-sarajishvili-tbilisi/layouts/84772", "rent": 510}, {"proj": "El Residence", "dev": "Vazisubani Residence", "addr": "Зестафони, 11", "district": "Сабуртало", "handover": "Q1 2027", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/25037.jpg", "purl": "https://korter.ge/en/el-residence-tbilisi", "house": "El Residence", "area": 55.6, "price": 69778, "ppm": 1255, "floors": "3, 4, 5", "url": "https://korter.ge/en/el-residence-tbilisi/layouts/76238", "rent": 500}, {"proj": "El Residence", "dev": "Vazisubani Residence", "addr": "Зестафони, 11", "district": "Сабуртало", "handover": "Q1 2027", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/25037.jpg", "purl": "https://korter.ge/en/el-residence-tbilisi", "house": "El Residence", "area": 64.5, "price": 80948, "ppm": 1255, "floors": "3, 4, 5", "url": "https://korter.ge/en/el-residence-tbilisi/layouts/76252", "rent": 580}, {"proj": "El Residence", "dev": "Vazisubani Residence", "addr": "Зестафони, 11", "district": "Сабуртало", "handover": "Q1 2027", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/25037.jpg", "purl": "https://korter.ge/en/el-residence-tbilisi", "house": "El Residence", "area": 71.7, "price": 89984, "ppm": 1255, "floors": "3, 4, 5", "url": "https://korter.ge/en/el-residence-tbilisi/layouts/76253", "rent": 650}, {"proj": "El Residence", "dev": "Vazisubani Residence", "addr": "Зестафони, 11", "district": "Сабуртало", "handover": "Q1 2027", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/25037.jpg", "purl": "https://korter.ge/en/el-residence-tbilisi", "house": "El Residence", "area": 88.0, "price": 110440, "ppm": 1255, "floors": "3, 4, 5", "url": "https://korter.ge/en/el-residence-tbilisi/layouts/76235", "rent": 790}, {"proj": "El Residence", "dev": "Vazisubani Residence", "addr": "Зестафони, 11", "district": "Сабуртало", "handover": "Q1 2027", "ready": false, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/25037.jpg", "purl": "https://korter.ge/en/el-residence-tbilisi", "house": "El Residence", "area": 119.3, "price": 149722, "ppm": 1255, "floors": "3, 4, 5", "url": "https://korter.ge/en/el-residence-tbilisi/layouts/76248", "rent": 1070}, {"proj": "Krtsanisi Modern", "dev": "Industrial-Investment Corp.", "addr": "Вахтанга Горгасали, 61", "district": "Ортачало", "handover": "сдан, Q3 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/19076.jpg", "purl": "https://korter.ge/en/krtsanisi-modern-tbilisi", "house": "—", "area": 51.2, "price": 87040, "floors": "—", "url": "https://korter.ge/en/krtsanisi-modern-tbilisi/layouts/68723", "rent": 610, "ppm": 1700}, {"proj": "Krtsanisi Modern", "dev": "Industrial-Investment Corp.", "addr": "Вахтанга Горгасали, 61", "district": "Ортачало", "handover": "сдан, Q3 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/19076.jpg", "purl": "https://korter.ge/en/krtsanisi-modern-tbilisi", "house": "Block B", "area": 53.3, "price": 88000, "floors": "2", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/krtsanisi-modern/668287", "rent": 640, "ppm": 1651}, {"proj": "Ortachalis Turfa", "dev": "Floors", "addr": "Артура Лаиста, 3–13", "district": "Ортачало", "handover": "сдан, Q3 2023", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/10126.jpg", "purl": "https://korter.ge/en/ortachalis-turfa-tbilisi", "house": "—", "area": 63.0, "price": 95000, "floors": "7", "url": "https://korter.ge/en/apartments-for-sale-tbilisi/ortachalis-turfa/1053218", "rent": 760, "ppm": 1508}, {"proj": "M Tower Ortachala", "dev": "LTD Megobroba", "addr": "Вахтанга Горгасали 3-й туп., 2", "district": "Ортачало", "handover": "сдан, Q4 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/18025.jpg", "purl": "https://korter.ge/en/m-tower-ortachala-tbilisi", "house": "—", "area": 46.8, "price": 79509, "floors": "2", "url": "https://korter.ge/en/m-tower-ortachala-tbilisi/layouts/82187", "rent": 560, "ppm": 1699}, {"proj": "Park Ortachala", "dev": "Irbis", "addr": "Вахтанга Горгасали, 105", "district": "Ортачало", "handover": "сдан, Q2 2025", "ready": true, "img": "https://storage.googleapis.com/bd-ge-01/buildings-v2/840x630/11895.jpg", "purl": "https://korter.ge/en/park-ortachala-tbilisi", "house": "Block A", "area": 51.0, "price": 81600, "floors": "1–19", "url": "https://korter.ge/en/park-ortachala-tbilisi/layouts/46027", "rent": 560, "ppm": 1600}];
-const BUDGET = 200000, VNZH = 150000;
-const RENO = 420;            // = 600 $/м² жилой площади; жилая ≈ 70% общей
-const TAX = 0.05, MANAGE = 0.15, DEAL = 1400;
-const renoOf = l => Math.round(l.area * RENO / 10) * 10;
-const netRent = l => l.rent * 12 * (1 - TAX) * (1 - MANAGE);
-const netYield = l => netRent(l) / (l.price + renoOf(l)) * 100;
-let sel = new Set(), filter = 'all';
-const GROUPS = {'Готовое сейчас':'ready','Каркас к марту':'build','Хвост и аренда':'tail'};
-function groupOf(l){
-  if (l.ready) return 'ready';
-  if (l.price >= 143000) return 'build';
-  return 'tail';
-}
-function fmt(n){ return '$' + n.toLocaleString('ru-RU'); }
-function render(){
-  const g = document.getElementById('grid');
-  g.innerHTML = LOTS.map((l,i)=>{
-    if (filter!=='all' && groupOf(l)!==filter) return '';
-    const on = sel.has(i);
-    return `<div class="card ${on?'sel':''}">
-      <img src="${l.img}" alt="${l.proj}" loading="lazy">
-      <div class="body">
-        <span class="tag ${l.ready?'ready':'build'}">${l.ready?'Сдан':'Сдача '+l.handover}</span>
-        <div class="name">${l.proj}</div>
-        <p class="addr">${l.district} · ${l.addr} · ${l.house}</p>
-        <div class="price">${fmt(l.price)}</div>
-        <div class="ppm">$${l.ppm.toLocaleString('ru-RU')}/м² · ${l.area} м²</div>
-        <div class="meta"><span>Аренда ~$${l.rent}/мес</span><span>Ремонт ~$${renoOf(l).toLocaleString('ru-RU')}</span><span>Чистая ${netYield(l).toFixed(1)}%</span></div>
-        <div class="actions">
-          <button class="btn" onclick="toggle(${i})">${on?'Убрать':'Добавить'}</button>
-          <a class="link" href="${l.url}" target="_blank" rel="noopener">лот</a>
-        </div>
-      </div></div>`;
-  }).join('');
-  summary();
-}
-function toggle(i){ sel.has(i)?sel.delete(i):sel.add(i); render(); }
-function summary(){
-  let sum=0, rent=0, reno=0, net=0, ready=true, dates=new Set();
-  sel.forEach(i=>{ const l=LOTS[i]; sum+=l.price; rent+=l.rent; reno+=renoOf(l); net+=netRent(l);
-    if(!l.ready){ ready=false; dates.add(l.handover); } });
-  document.getElementById('sSum').textContent = fmt(sum);
-  document.getElementById('sCnt').textContent = sel.size;
-  document.getElementById('sRent').textContent = '$'+rent;
-  document.getElementById('sReno').textContent = fmt(reno);
-  document.getElementById('sIn').textContent = fmt(sum + reno + (sel.size?DEAL:0));
-  document.getElementById('sYield').textContent = sum? (net/(sum+reno)*100).toFixed(1)+'%' : '—';
-  const rest = BUDGET - (sum + reno + (sel.size?DEAL:0));
-  const rEl = document.getElementById('sRest');
-  rEl.textContent = fmt(Math.abs(rest)) + (rest<0?' сверх':' свободно');
-  rEl.className = rest<0?'bad':'ok';
-  const v = document.getElementById('sVnzh');
-  if (sum >= VNZH && ready){ v.textContent='да, сразу'; v.className='ok'; }
-  else if (sum >= VNZH){ v.textContent='база есть, ждём сдачу ('+[...dates].join(', ')+')'; v.className='ok'; }
-  else { v.textContent='нет, нужно ещё '+fmt(VNZH-sum); v.className='bad'; }
-}
-const SETS = {
-  1:['https://korter.ge/en/park-ortachala-tbilisi/layouts/46044'],
-  2:['https://korter.ge/en/apartments-for-sale-tbilisi/arsenal-residence/393326'],
-  3:['https://korter.ge/en/apartments-for-sale-tbilisi/park-ortachala/905642'],
-  4:['https://korter.ge/en/krtsanisi-modern-tbilisi/layouts/68723','https://korter.ge/en/apartments-for-sale-tbilisi/krtsanisi-modern/668287'],
-  5:['https://korter.ge/en/apartments-for-sale-tbilisi/ortachalis-turfa/1053218','https://korter.ge/en/m-tower-ortachala-tbilisi/layouts/82187'],
-  6:['https://korter.ge/en/park-ortachala-tbilisi/layouts/46034','https://korter.ge/en/park-ortachala-tbilisi/layouts/46027']
-};
-function preset(kind){
-  sel.clear();
-  (SETS[kind]||[]).forEach(u=>{ const i = LOTS.findIndex(l=>l.url===u); if(i>=0) sel.add(i); });
-  render();
-  document.getElementById('grid').scrollIntoView({behavior:'smooth',block:'start'});
-}
-function setFilter(f,el){ filter=f;
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  el.classList.add('on'); render(); }
-document.addEventListener('DOMContentLoaded', render);
-</script>
-</body></html>
+  <footer>Готовые лоты проверены живьём 16.11.2026: страница отвечает, цена в заголовке совпадает с каталогом.
+  Цены — запрос продавца, торг не учтён. Аренда — оценка по живым объявлениям этих домов (~).
+  Данные по переуступкам и стройке — из разборов Александры (октябрь — ноябрь 2026), ссылки на PDF в карточках.
+  В стратегии 1 ремонт не закладывается. В стратегии 2 ремонт второй квартиры — 600 $/м² жилой площади.
+ </footer>
+</div></body></html>
