@@ -12,6 +12,15 @@ h1{font-size:27px;line-height:1.2;margin:10px 0 8px;color:var(--choc)}
 .lead{color:var(--muted);font-size:15px;margin:0}
 h2{font-size:20px;color:var(--choc);margin:32px 0 6px}
 h2 .no{color:var(--champ);font-size:14px;margin-right:8px}
+.calc2{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-top:12px}
+.calc2 label{display:block;font-size:13px;color:var(--muted);margin-bottom:10px}
+.calc2 input{display:block;width:100%;margin-top:5px;padding:11px 12px;font-size:16px;border:1px solid var(--line);
+border-radius:10px;background:#FBF8F4;color:var(--ink)}
+.calc2 .out{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.calc2 .out div{background:#FBF8F4;border-radius:10px;padding:9px 11px}
+.calc2 .out span{display:block;font-size:12px;color:var(--muted)}
+.calc2 .out b{font-size:15px;color:var(--choc)}
+tr.hl td{background:#EEF6F0}
 .sub{color:var(--muted);font-size:14px;margin:0 0 14px}
 .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:12px 0}
 .card h3{margin:0 0 4px;font-size:18px;color:var(--choc)}
@@ -115,17 +124,45 @@ footer{color:var(--muted);font-size:12px;margin-top:28px;border-top:1px solid va
       </table>
     </div>
 
-  <h2><span class="no">04</span>Сводка</h2>
+  <h2><span class="no">04</span>Три цены выхода: 1 700, 1 800, 1 900</h2>
+  <p class="sub">Покупка фиксирована — 1 600 $/м². Считаем, сколько останется после комиссии 3%
+  и налога 5%, если продать дороже.</p>
   <table>
-    <tr><th>Лот</th><th>Покупка</th><th>Взнос 30%</th><th>Платёж</th><th>Продажа</th><th>Прибыль</th><th>За год</th></tr>
-    <tr><td>Студия · 36,6 м²</td>
-<td class="r">58 560 $</td><td class="r">17 568 $</td>
-<td class="r">366 $</td><td class="r">62 220 $</td>
-<td class="r">1 610 $</td><td class="r">7,3%</td></tr><tr><td>1+1 · 56,4 м²</td>
-<td class="r">90 240 $</td><td class="r">27 072 $</td>
-<td class="r">564 $</td><td class="r">95 880 $</td>
-<td class="r">2 482 $</td><td class="r">7,3%</td></tr>
+    <tr><th>Лот</th><th>Выход</th><th>Цена продажи</th><th>Прибыль</th><th>За год на свои</th><th>На всю цену</th></tr>
+    <tr class="hl"><td><b>Студия</b> · 36,6 м²</td><td class="r">1 700 $/м²</td><td class="r">62 220 $</td><td class="r"><b>1 610 $</b></td><td class="r"><b>7,3%</b></td><td class="r">2,8%</td></tr><tr><td><b>Студия</b> · 36,6 м²</td><td class="r">1 800 $/м²</td><td class="r">65 880 $</td><td class="r"><b>4 978 $</b></td><td class="r"><b>22,7%</b></td><td class="r">8,5%</td></tr><tr><td><b>Студия</b> · 36,6 м²</td><td class="r">1 900 $/м²</td><td class="r">69 540 $</td><td class="r"><b>8 345 $</b></td><td class="r"><b>38,0%</b></td><td class="r">14,2%</td></tr><tr class="hl"><td><b>1+1</b> · 56,4 м²</td><td class="r">1 700 $/м²</td><td class="r">95 880 $</td><td class="r"><b>2 482 $</b></td><td class="r"><b>7,3%</b></td><td class="r">2,8%</td></tr><tr><td><b>1+1</b> · 56,4 м²</td><td class="r">1 800 $/м²</td><td class="r">101 520 $</td><td class="r"><b>7 670 $</b></td><td class="r"><b>22,7%</b></td><td class="r">8,5%</td></tr><tr><td><b>1+1</b> · 56,4 м²</td><td class="r">1 900 $/м²</td><td class="r">107 160 $</td><td class="r"><b>12 859 $</b></td><td class="r"><b>38,0%</b></td><td class="r">14,3%</td></tr>
   </table>
+
+  <h2><span class="no">05</span>Калькулятор</h2>
+  <div class="calc2">
+    <label>Площадь, м²<input id="a" type="number" value="36.6" step="0.1" inputmode="decimal"></label>
+    <label>Цена выхода, $/м²<input id="e" type="number" value="1800" step="50" inputmode="numeric"></label>
+    <div class="out">
+      <div><span>Цена покупки</span><b id="o1">—</b></div>
+      <div><span>Взнос 30%</span><b id="o2">—</b></div>
+      <div><span>Платёж в месяц</span><b id="o3">—</b></div>
+      <div><span>Продажа</span><b id="o4">—</b></div>
+      <div><span>Прибыль</span><b id="o5">—</b></div>
+      <div><span>Доходность за год</span><b id="o6">—</b></div>
+    </div>
+  </div>
+  <script>
+  (function(){var B=1600,S=0.30,N=48,C=0.03,T=0.05;
+  function m(v){return Math.round(v).toLocaleString("ru-RU").replace(/ /g," ")+" $";}
+  function p(v){return (Math.round(v*10)/10).toString().replace(".",",")+" %";}
+  function calc(){var a=parseFloat(document.getElementById("a").value)||0,
+    e=parseFloat(document.getElementById("e").value)||0,price=a*B,down=price*S,mon=down/N,
+    sale=a*e,gross=sale-price,comm=sale*C,tax=Math.max(0,gross)*T,
+    net=gross-comm-tax,inv=down+mon*12,roi=inv?net/inv*100:0;
+    document.getElementById("o1").textContent=m(price);
+    document.getElementById("o2").textContent=m(down);
+    document.getElementById("o3").textContent=m(mon);
+    document.getElementById("o4").textContent=m(sale);
+    document.getElementById("o5").textContent=m(net);
+    document.getElementById("o6").textContent=p(roi);}
+  document.getElementById("a").addEventListener("input",calc);
+  document.getElementById("e").addEventListener("input",calc);
+  calc();})();
+  </script>
   <div class="note">Студия и 1+1 — единственные форматы в этой партии: 10 студий 36,6 м² и
   10 однокомнатных 56,4 м², всего 930 м². Расчёт не учитывает ремонт: лоты продаются в зелёном
   каркасе, отделка — отдельная статья.</div>
