@@ -53,6 +53,15 @@ th{background:var(--sand);font-size:11.5px;text-transform:uppercase;letter-spaci
 td.r{text-align:right;white-space:nowrap}
 footer{color:var(--muted);font-size:12px;margin-top:32px;border-top:1px solid var(--line);padding-top:14px}
 @media(max-width:520px){h1{font-size:23px}.lot .top{flex-direction:column;gap:2px}}
+nav.toc a.go{background:var(--choc);color:#fff;border-color:var(--choc);font-weight:700}
+.fold{border:1px solid var(--line);border-radius:14px;background:#fff;margin:10px 0 4px;padding:0}
+.fold>summary{cursor:pointer;list-style:none;padding:14px 16px;font-weight:700;color:var(--choc);display:flex;justify-content:space-between;align-items:center}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary:after{content:"\25BE";color:var(--champ);font-size:14px}
+.fold .cnt{color:var(--muted);font-weight:400;font-size:13px}
+.fold .body{padding:0 10px 12px}
+.fold .lot{margin:8px 0}
+.btn{display:inline-block;background:var(--choc);color:#fff;text-decoration:none;border-radius:999px;padding:11px 20px;font-size:14.5px;font-weight:700;margin:6px 0 2px}
 </style></head><body>
 <header><div class="wrap">
   <div class="kicker">Каталог · Тбилиси · $200 000</div>
@@ -109,7 +118,6 @@ footer{color:var(--muted);font-size:12px;margin-top:32px;border-top:1px solid va
   ВНЖ — по готовой квартире, сразу. Ремонт в стратегии 1 не закладываем: берём готовое жильё,
   аренда ~812 $/мес с первого месяца. Переуступка — BLOX Kheivani: взнос
   15 372 $, остальное по графику застройщика.</div>
-  <a class="btn-main" href="#pereustupki" onclick="document.getElementById('pereustupki').open=true">Подобрать переуступку →</a>
 
   <details class="acc" id="pereustupki">
     <summary><span>Остаток бюджета — варианты переуступок</span><span class="cnt">3 варианта</span></summary>
