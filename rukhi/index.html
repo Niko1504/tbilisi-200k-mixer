@@ -92,7 +92,7 @@ footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-si
   <p class="sub">Введи цену застройщика и срок выхода — страница посчитает вход, платёж и прибыль.</p>
   <div class="tool">
     <label>Цена, $ за м²<input id="ppm" type="number" value="2100" step="25" inputmode="decimal"></label>
-    <label>Срок выхода, месяцев<input id="hold" type="number" value="24" step="6" inputmode="numeric"></label>
+    <label>Срок выхода, месяцев (26 = декабрь 2028)<input id="hold" type="number" value="26" step="1" inputmode="numeric"></label>
     <label>Цена выхода, $ за м²<input id="exit" type="number" value="2400" step="25" inputmode="decimal"></label>
     <div class="out">
       <div><span>Цена квартиры</span><b id="o1">—</b></div>
@@ -105,7 +105,24 @@ footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-si
     <p class="note">Комиссия 3% от продажи, налог 5% с разницы при сроке меньше 24 месяцев.</p>
   </div>
 
-  <h2><span class="no">05</span>Кому подходит</h2>
+  <h2><span class="no">05</span>Стратегия: продажа в 2028 году</h2>
+  <p class="sub">Держим до 2028 года и продаём. Вход 5% и рассрочка 45% — деньги входят постепенно,
+  остаток 50% на ключах закрывает покупатель по переуступке.</p>
+  <table>
+    <tr><th>Шаг</th><th>Когда</th><th class="r">Сколько</th></tr>
+    <tr><td>Первый взнос 5%</td><td>сейчас, при подписании</td><td class="r" id="s1">—</td></tr>
+    <tr><td>Рассрочка 45% — 50 месяцев</td><td>ежемесячно</td><td class="r" id="s2">—</td></tr>
+    <tr><td>Внесено к декабрю 2028 (26 месяцев)</td><td>к моменту продажи</td><td class="r" id="s3">—</td></tr>
+    <tr><td>Продажа в 2028</td><td>декабрь 2028</td><td class="r" id="s4">—</td></tr>
+    <tr><td>Комиссия 3% + налог 5% с разницы</td><td>при сделке</td><td class="r" id="s5">—</td></tr>
+    <tr><td><b>Прибыль на руки</b></td><td>декабрь 2028</td><td class="r"><b id="s6">—</b></td></tr>
+    <tr><td><b>Доходность на внесённые</b></td><td>за 26 месяцев</td><td class="r"><b id="s7">—</b></td></tr>
+  </table>
+  <div class="calc"><b>Что важно в этой стратегии.</b> Продажа в 2028 — это переуступка права требования:
+  покупатель принимает остаток 50% на ключах. Значит, к сделке важны два числа: цена выхода
+  и сколько рассрочки уже выплачено. Оба считаются ниже.</div>
+
+  <h2><span class="no">06</span>Кому подходит</h2>
   <ul>
     <li>Вход 5% — самая низкая точка входа из всех объектов в подборке.</li>
     <li>Горизонт спокойный: платишь 45% пятьдесят месяцев, остальное на ключах — без ипотеки.</li>
@@ -127,7 +144,7 @@ footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-si
 </div>
 <script>
 (function(){
- var A=56,95, D=0.05, P=0.45, M=50, T=0.50, C=0.03, X=0.05;
+ var A=56.95, D=0.05, P=0.45, M=50, T=0.50, C=0.03, X=0.05, HOLD=26;
  function m(v){return Math.round(v).toLocaleString("ru-RU").replace(/\u00A0/g," ")+" $";}
  function pc(v){return (Math.round(v*10)/10).toString().replace(".",",")+" %";}
  function calc(){
@@ -144,6 +161,14 @@ footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-si
   document.getElementById("o4").textContent=m(price*T);
   document.getElementById("o5").textContent=m(net);
   document.getElementById("o6").textContent=pc(roi);
+  var paid=P*Math.min(hold,M)/M;
+  document.getElementById("s1").textContent=m(price*D);
+  document.getElementById("s2").textContent=m(price*P/M)+" в мес";
+  document.getElementById("s3").textContent=m(price*(D+paid));
+  document.getElementById("s4").textContent=m(sale);
+  document.getElementById("s5").textContent=m(comm+tax);
+  document.getElementById("s6").textContent=m(net);
+  document.getElementById("s7").textContent=pc(net/(price*(D+paid))*100);
  }
  ["ppm","hold","exit"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
  calc();})();
